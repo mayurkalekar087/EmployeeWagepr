@@ -5,13 +5,12 @@ isPresenthalf=2
 wagePerHr=20
 randomCheck=$((RANDOM%3));
 
-if [ $isPresent -eq $randomCheck ];
-then
-        empHrs=8;
-elif [ $isPresenthalf -eq $randomCheck ];
-then
-	empHrs=4;
-else
-	empHrs=0;
-fi
+case $randomCheck in
+ 	$isPresent)
+        empHrs=8 ;;
+	$isPresenthalf)
+	empHrs=4 ;;
+	*)
+	empHrs=0 ;;
+esac
 salary=$(( $wagePerHr * $empHrs ))
